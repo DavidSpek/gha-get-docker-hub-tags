@@ -128,4 +128,10 @@ func main() {
 	newPatch.BumpPatch()
 
 	fmt.Println(fmt.Sprintf(`::set-output name=latest_tag::%s new_major=::%s new_minor=::%s new_patch=::%s new_v_major=::v%s new_v_minor=::v%s new_v_patch=::v%s`, latestTag, newMajor, newMinor, newPatch, newMajor, newMinor, newPatch))
+	fmt.Println(fmt.Sprintf(`::set-output new_major=::%s`, newMajor))
+	fmt.Println(fmt.Sprintf(`::set-output new_v_major=::v%s`, newMajor))
+	fmt.Println(fmt.Sprintf(`::set-output new_minor=::%s`, newMinor))
+	fmt.Println(fmt.Sprintf(`::set-output new_v_minor=::v%s`, newMinor))
+	fmt.Println(fmt.Sprintf(`::set-output new_patch=::%s`, newPatch))
+	fmt.Println(fmt.Sprintf(`::set-output new_v_patch=::v%s`, newPatch))
 }
