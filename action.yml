@@ -5,15 +5,25 @@ branding:
   icon: tag
   color: purple
 inputs:
-  org:
-    description: The Docker Hub org
-    required: true
-  repo:
-    description: The Docker Hub repo
+  img:
+    description: The container image
     required: true
 outputs:
-  tag:
+  latest_tag:
     description: The latest tag
+  new_major:
+    description: Next Major Version
+  new_minor:
+    description: Next Minor Version
+  new_patch:
+    description: Next Patch Version
+  new_v_major:
+    description: Next Major Version (prefixed with v)
+  new_v_minor:
+    description: Next Minor Version (prefixed with v)
+  new_v_patch:
+    description: Next Patch Version (prefixed with v)
+
 runs:
   using: "docker"
   image: "Dockerfile"

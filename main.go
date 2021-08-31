@@ -82,12 +82,11 @@ func newSystemContext() *types.SystemContext {
 
 func main() {
 
-	org := os.Getenv("INPUT_ORG")
-	repo := os.Getenv("INPUT_REPO")
+	img := os.Getenv("INPUT_IMG")
 
 	ctx := context.Background()
 
-	url := fmt.Sprintf(`docker://%s/%s`, org, repo)
+	url := fmt.Sprintf(`docker://%s`, img)
 
 	imgRef, err := parseDockerRepositoryReference(url)
 	if err != nil {
@@ -110,9 +109,23 @@ func main() {
 	}
 
 	if len(tags) == 0 {
-		log.Fatal(fmt.Sprintf(`Unable to find tags for %s/%s`, org, repo))
+		log.Fatal(fmt.Sprintf(`Unable to find tags for %s`, img))
 	}
 
 	semver.Sort(tags)
-	fmt.Println(fmt.Sprintf(`::set-output name=tag::%s`, tags[len(tags)-1]))
+
+	latestTag := tags[len(tags)-1]
+	var newMajor semver.Version
+	newMajor.Set(latestTag.String())
+	newMajor.BumpMajor()
+
+	var newMinor semver.Version
+	newMinor.Set(latestTag.String())
+	newMinor.BumpMinor()
+
+	var newPatch semver.Version
+	newPatch.Set(latestTag.String())
+	newPatch.BumpPatch()
+
+	fmt.Println(fmt.Sprintf(`::set-output name=latest_tag::%s new_major=::%s new_minor=::%s new_patch=::%s new_v_major=::v%s new_v_minor=::v%s new_v_patch=::v%s`, latestTag, newMajor, newMinor, newPatch, newMajor, newMinor, newPatch))
 }
