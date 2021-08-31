@@ -1,6 +1,6 @@
-name: "Get Docker Hub Tag"
-description: "Get the latest tag for an image on Docker Hub"
-author: "Jacob Tomlinson"
+name: "Get Container Image Tag"
+description: "Get the latest tag for a container image"
+author: "David van der Spek"
 branding:
   icon: tag
   color: purple
