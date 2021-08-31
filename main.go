@@ -127,11 +127,19 @@ func main() {
 	newPatch.Set(latestTag.String())
 	newPatch.BumpPatch()
 
-	fmt.Println(fmt.Sprintf(`::set-output name=latest_tag::%s`, latestTag))
-	fmt.Println(fmt.Sprintf(`::set-output name=new_major=::%s`, newMajor))
-	fmt.Println(fmt.Sprintf(`::set-output name=new_v_major=::v%s`, newMajor))
-	fmt.Println(fmt.Sprintf(`::set-output name=new_minor=::%s`, newMinor))
-	fmt.Println(fmt.Sprintf(`::set-output name=new_v_minor=::v%s`, newMinor))
-	fmt.Println(fmt.Sprintf(`::set-output name=new_patch=::%s`, newPatch))
-	fmt.Println(fmt.Sprintf(`::set-output name=new_v_patch=::v%s`, newPatch))
+	fmt.Println(
+		fmt.Sprintf(`::set-output name=latest_tag::%s`, latestTag),
+		fmt.Sprintf(`::set-output name=new_major=::%s`, newMajor),
+		fmt.Sprintf(`::set-output name=new_v_major=::v%s`, newMajor),
+		fmt.Sprintf(`::set-output name=new_minor=::%s`, newMinor),
+		fmt.Sprintf(`::set-output name=new_v_minor=::v%s`, newMinor),
+		fmt.Sprintf(`::set-output name=new_patch=::%s`, newPatch),
+		fmt.Sprintf(`::set-output name=new_v_patch=::v%s`, newPatch),
+	)
+	// fmt.Println(fmt.Sprintf(`::set-output name=new_major=::%s`, newMajor))
+	// fmt.Println(fmt.Sprintf(`::set-output name=new_v_major=::v%s`, newMajor))
+	// fmt.Println(fmt.Sprintf(`::set-output name=new_minor=::%s`, newMinor))
+	// fmt.Println(fmt.Sprintf(`::set-output name=new_v_minor=::v%s`, newMinor))
+	// fmt.Println(fmt.Sprintf(`::set-output name=new_patch=::%s`, newPatch))
+	// fmt.Println(fmt.Sprintf(`::set-output name=new_v_patch=::v%s`, newPatch))
 }
