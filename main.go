@@ -97,6 +97,13 @@ func main() {
 
 	result, err := docker.GetRepositoryTags(ctx, sys, imgRef)
 	if err != nil {
+		fmt.Println(fmt.Sprintf(`::set-output name=latest_tag::%s`, "image does not yet exist, outputting first semver"))
+		fmt.Println(fmt.Sprintf(`::set-output name=new_major::%s`, "0.1.0"))
+		fmt.Println(fmt.Sprintf(`::set-output name=new_v_major::v%s`, "0.1.0"))
+		fmt.Println(fmt.Sprintf(`::set-output name=new_minor::%s`, "0.1.0"))
+		fmt.Println(fmt.Sprintf(`::set-output name=new_v_minor::v%s`, "0.1.0"))
+		fmt.Println(fmt.Sprintf(`::set-output name=new_patch::%s`, "0.1.0"))
+		fmt.Println(fmt.Sprintf(`::set-output name=new_v_patch::v%s`, "0.1.0"))
 		return
 	}
 
